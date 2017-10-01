@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "jotavejv",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",

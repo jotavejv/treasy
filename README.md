@@ -1,9 +1,11 @@
+# Go to
+`cd vanillaJS`
+
 ## Install Dependencies
 `npm install`
 `bower install`
 
 ## Gulp
-`cd vanillaJS`
 `gulp` => sass com live reload
 `gulp build` => gera a pasta dist para produção
 
