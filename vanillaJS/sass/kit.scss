@@ -1,28 +1,11 @@
 @import "./bower_components/font-awesome/scss/font-awesome.scss";
+@import "_reset";
+@import "_variables";
 
-$fast: .15s;
-$smooth: .25s;
-$color: #A0CE4E;
-$gray: #808083;
-$radius: 4px;
 @function ease(){
 	@return ease-in-out;
 }
 
-body{
-	padding: 0;
-	margin: 0;
-	font-size: 12px;
-	font-family: Arial, sas;
-}
-*{
-	box-sizing: border-box;
-}
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
 .wrapper {
 	padding: 20px;
 	position: relative;
@@ -57,7 +40,7 @@ ul {
 	display: block;
 	text-align: right;
 	padding: 5px 0;
- color: $color;
+ 	color: $color;
 	font-weight: bold;
 	text-decoration: none;
 		&:after{
@@ -174,11 +157,10 @@ ul {
 	bottom: 0;
 	margin: auto;
 	max-width: 600px;
-	max-height: 250px;
+	max-height: 300px;
 	margin: auto;
 	border-radius: $radius;
 	padding: 0 20px;
-	//padding-bottom: 25px;
 	background: #fff;
 	z-index: 2;
 	opacity: 0;
@@ -208,14 +190,14 @@ ul {
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		justify-content: space-around;
+		justify-content: center;
 		input[type="text"]{
 			border: solid 1px $gray;
 			border-bottom-color: $color;
 			border-top: none;
 			border-left: none;
 			border-right: none;
-			padding: 10px 4px;
+			padding: 30px 4px;
 			outline: none;
 			font-size: 12px;
 			&::-webkit-input-placeholder {
@@ -237,6 +219,8 @@ ul {
 			padding: 6px 12px;
 			font-size: 12px;
 			align-self: flex-end;
+			margin-top: auto;
+			margin-bottom: 20px;
 			cursor: pointer;
 			background: rgba($gray, .15);
 			color: darken($gray, 10%);
