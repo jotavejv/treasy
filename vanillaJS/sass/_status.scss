@@ -1,0 +1,88 @@
+.ui-status{
+	display: inline-block;
+	line-height: 1;
+	margin-right: baseH(2);
+	span{
+		vertical-align: middle;
+		color: $text-grey;
+	}
+	.filled, .full, .busy, .free, .week-day {
+		display: inline-block;
+		vertical-align: middle;
+		border-radius: $radius;
+		box-shadow: none;
+		height: base(6);
+		font-size: 18px;
+		position: relative;
+		overflow: hidden;
+		width: base(6);
+		border: solid 1px $border-grey;
+	}
+	.filled {
+		background: $success-green;
+		.stripes {
+			background-image: linear-gradient(0,rgba(0, 0, 0, .08) 12%,transparent 12%, transparent 24%,rgba(0, 0, 0, .08) 24%, rgba(0, 0, 0, .08) 36%, transparent 36%, transparent 48%, rgba(0, 0, 0, .08) 48%,rgba(0, 0, 0, .08) 60%, transparent 60%, transparent 72%, rgba(0, 0, 0, .08) 72%,rgba(0, 0, 0, .08) 84%, transparent 84%, transparent 96%, rgba(0, 0, 0, .08) 96%, rgba(0, 0, 0, .08));
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
+	.free {
+		background: #FFFFEC;
+	}
+	.full {
+		background: $warning-yellow;
+		.stripes { //overlay
+	        background-image: linear-gradient(-30deg,rgba(0, 0, 0, .08) 12%,transparent 12%,transparent 24%, rgba(0, 0, 0, .08) 24%,rgba(0, 0, 0, .08) 36%,transparent 36%,transparent 48%,rgba(0, 0, 0, .08) 48%,rgba(0, 0, 0, .08) 60%,transparent 60%,transparent 72%,rgba(0, 0, 0, .08) 72%, rgba(0, 0, 0, .08) 84%,transparent 84%,transparent 96%,rgba(0, 0, 0, .08) 96%,rgba(0, 0, 0, .08));
+	        height: 100%;
+	        left: 0;
+	        position: absolute;
+	        top: 0;
+	        width: 50%;
+			& + .stripes {
+	            background-image: linear-gradient( 30deg,rgba(0, 0, 0, .08) 12%,transparent 12%,transparent 24%,rgba(0, 0, 0, .08) 24%,rgba(0, 0, 0, .08) 36%,transparent 36%,transparent 48%,rgba(0, 0, 0, .08) 48%,rgba(0, 0, 0, .08) 60%,transparent 60%,transparent 72%,rgba(0, 0, 0, .08) 72%,rgba(0, 0, 0, .08) 84%,transparent 84%,transparent 96%,rgba(0, 0, 0, .08) 96%,rgba(0, 0, 0, .08));
+	            left: 50%;
+	        }
+    	}
+	}
+	.busy {
+		background: $danger-red;
+		.stripes { //overlay
+	        background-image: linear-gradient(-15deg, rgba(0, 0, 0, .08) 12%,transparent 12%,transparent 24%,rgba(0, 0, 0, .08) 24%, rgba(0, 0, 0, .08) 36%,transparent 36%,transparent 48%,rgba(0, 0, 0, .08) 48%,rgba(0, 0, 0, .08) 60%,transparent 60%,transparent 72%,rgba(0, 0, 0, .08) 72%,rgba(0, 0, 0, .08) 84%, transparent 84%,transparent 96%,rgba(0, 0, 0, .08) 96%,rgba(0, 0, 0, .08));
+	        height: 100%;
+	        left: 0;
+	        position: absolute;
+	        top: 0;
+	        width: 100%;
+	    }
+	}
+	&.ui-status--lg{
+		span{
+			font-size: $font-lg;
+		}
+		.filled, .full, .busy, .free, .week-day {
+			height: base(6);
+			width: base(6);
+		}
+	}
+	&.ui-status--md{
+		span{
+			font-size: $font-md;
+		}
+		.filled, .full, .busy, .free, .week-day {
+			height: base(5);
+			width: base(5);
+		}
+	}
+	&.ui-status--sm{
+		span{
+			font-size: $font-sm;
+		}
+		.filled, .full, .busy, .free, .week-day {
+			height: base(4);
+			width: base(4);
+		}
+	}
+}

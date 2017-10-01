@@ -1,0 +1,70 @@
+
+//COLORS
+$disabled-blue: #C8D3DC;
+$net-blue: #438ACB;
+$status-blue: #2D74B7;
+$kenobi: #26C9FF;
+$crado: #507192;
+$sylvar: #33465E;
+$success-green: #5BA343;
+$warning-yellow: #F4B800;
+$danger-red: #F32C40;
+$pale: #FFFFEC;
+$zebra-grey: #F2F2F2;
+$bg-grey: #E9E9E9;
+$div-grey: #CCC;
+$border-grey: rgba(black, .2);
+$placeholder-grey: rgba(black, .33);
+$doubledevil-grey: rgba(black, .60);
+$text-grey: rgba(black, .73);
+$id-grey: rgba(black, .80);
+$bg-body: $zebra-grey;
+$bg-panel: #FFF;
+$bglightgray: #999;
+$color-primary: $status-blue;
+$color-danger: $danger-red;
+$color-button-default: $zebra-grey;
+$input-focus-default: $kenobi;
+$input-shadow-inset:  inset 0 1px 2px rgba(black, .1);
+$input-shadow-outset: 0 0 6px;
+$input-error: $danger-red;
+$input-warning: $warning-yellow;
+$input-success: $success-green;
+
+$base: 4px;
+//vertical
+$padding-base-vertical: $base;
+$padding-xxs-vertical: $padding-base-vertical; // 4px
+$padding-xs-vertical: $padding-xxs-vertical * 2; // 8px
+$padding-sm-vertical: $padding-xxs-vertical * 3; // 12px
+$padding-md-vertical: $padding-xxs-vertical * 4; // 16px
+$padding-lg-vertical: $padding-xxs-vertical * 5; // 20px
+$padding-xlg-vertical: $padding-xxs-vertical * 6; // 24px
+$padding-xxlg-vertical: $padding-xxs-vertical * 7; // 28px
+$padding-xxxlg-vertical: $padding-xxs-vertical * 8; // 32px
+
+//horizontal
+$padding-base-horizontal: ($base * 2);
+$padding-xs: $padding-base-horizontal;
+$padding-sm: $padding-base-horizontal * 2;
+$padding-md: $padding-base-horizontal * 3;
+$padding-lg: $padding-base-horizontal * 4;
+$inline-block: 4px;
+
+// PADDINGS = horizontal x vertical
+$padding-button-sm: ($padding-xs-vertical - 1px) $padding-sm;
+$padding-button-md: ($padding-sm-vertical - 2px) $padding-sm;
+$padding-button-lg:  ($padding-md-vertical - 3px) $padding-md;
+
+// RADIUS
+$radius: 3px;
+
+// FONT-SIZES
+$font-sm: 12px;
+$font-md: 14px;
+$font-lg: 16px;
+
+// TIMES animation
+$fast-time: 0.15s;
+$normal-time: 0.25s;
+$fancy-time: 0.35s; // Helpers

@@ -1,0 +1,784 @@
+
+.ui-required{
+	&::before{
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		margin-right: $padding-base-vertical;
+		background:  $danger-red;
+	}
+}
+.ui-label{
+	position: relative;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: $doubledevil-grey;
+	display: block;
+	padding-bottom: $padding-base-vertical;
+}
+
+.ui-input {
+	position: relative;
+	display: inline-block;
+	& + .ui-button{
+		margin-left: baseH(1) - $inline-block;
+	}
+	.ui-message-label{
+		visibility: hidden;
+		display: block;
+		text-align: right;
+		font-size: 10px;
+		font-style: italic;
+		padding-top: $padding-base-vertical;
+	}
+	.icon-element{
+		visibility: hidden;
+		font-size: $font-md;
+		position: absolute;
+		right: 0;
+		top: -$padding-md-vertical;
+		bottom: 0;
+		margin: auto;
+		padding-right: $padding-xs;
+		height: 0;
+		line-height: 1.4; // required para alinhamento
+	}
+	&.ui-error{
+		input[type="text"],
+		input[type="password"]{
+			border-color: $input-error;
+			padding-right: 20px; // compensa o icone
+			&:focus{
+				box-shadow: $input-shadow-inset, $input-shadow-outset rgba($input-error, .35);
+				border-color: $input-error;
+			}
+		}
+		.ui-message-label, .icon-element{
+			color: $input-error;
+			visibility: visible;
+		}
+	}
+	&.ui-warning{
+		input[type="text"],
+		input[type="password"]{
+			border-color: $input-warning;
+			padding-right: 20px; // compensa o icone
+			&:focus{
+				box-shadow: $input-shadow-inset, $input-shadow-outset rgba($input-warning, .35);
+				border-color: $input-warning;
+			}
+		}
+		.ui-message-label, .icon-element{
+			color: $input-warning;
+			visibility: visible;
+		}
+	}
+	&.ui-success{
+		input[type="text"],
+		input[type="password"]{
+			border-color: $input-success;
+			padding-right: 20px; // compensa o icone
+			&:focus{
+				box-shadow: $input-shadow-inset, $input-shadow-outset rgba($input-success, .35);
+				border-color: $input-success;
+			}
+		}
+		.icon-element{
+			top: 0;
+			color: $input-success;
+			visibility: visible;
+		}
+	}
+	&.ui-input-password{
+		.icon-element{
+			top: -16px;
+		}
+	}
+	input[type="text"],
+	input[type="number"],
+	input[type="password"],
+	textarea{
+		outline: none;
+		box-sizing: border-box;
+		border-radius: $radius;
+		border: solid 1px $border-grey;
+		box-shadow: $input-shadow-inset;
+		padding: ($padding-sm-vertical - 3) $padding-xs;
+		line-height: 1;
+		font-size: $font-md;
+		color: $text-grey;
+		width: 100%;
+		transition:all $fast-time linear;
+		&:focus{
+			box-shadow: $input-shadow-inset, $input-shadow-outset rgba($input-focus-default, .35);
+			border-color: $input-focus-default;
+		}
+		&:disabled{
+			background: $bg-grey;
+		}
+
+		/*placeholder style*/
+		&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+			color: $placeholder-grey;
+		}
+		&::-moz-placeholder { /* Firefox 19+ */
+			color: $placeholder-grey;
+		}
+		&:-ms-input-placeholder { /* IE 10+ */
+			color: $placeholder-grey;
+		}
+		&:-moz-placeholder { /* Firefox 18- */
+			color: $placeholder-grey;
+		}
+	}
+
+	/*textarea*/
+	.text-countdown{
+		position: absolute;
+		right: 0;
+		bottom: $padding-base-vertical;
+		font-size: 10px;
+	}
+	textarea{
+		resize: vertical;
+		min-height: 180px;
+		font-family: inherit; // body font family
+	}
+
+	/*prefixos e sufixos*/
+	&.input-moeda,
+	&.input-percent,
+	&.input-unidade,
+	&.input-miligramas{
+		width: 80px;
+	}
+	&.input-percent,
+	&.input-miligramas{
+		input[type="text"]{
+			text-align: right;
+		}
+	}
+	&.input-moeda{
+		input{
+			padding-left: baseH(4) - 4;
+		}
+		&::before{
+			content: "R$";
+			position: absolute;
+			color: $text-grey;
+			font-size: $font-md;
+			color: $placeholder-grey;
+			top:27px;
+			left: baseH(1);
+		}
+	}
+	&.input-percent{
+		input{
+			padding-right: baseH(3) - 4;
+		}
+		&::after{
+			content: "%";
+			position: absolute;
+			color: $text-grey;
+			font-size: $font-md;
+			color: $placeholder-grey;
+			top:27px;
+			right: baseH(1);
+		}
+	}
+	&.input-unidade{
+		input{
+			padding-right: baseH(3) - 4;
+		}
+		&::after{
+			content: "Un.";
+			position: absolute;
+			color: $text-grey;
+			font-size: $font-md;
+			color: $placeholder-grey;
+			top:27px;
+			right: baseH(1);
+		}
+	}
+	&.input-miligramas{
+		input{
+			padding-right: baseH(4) - 4;
+		}
+		&::after{
+			content: "mg";
+			position: absolute;
+			color: $text-grey;
+			font-size: $font-md;
+			color: $placeholder-grey;
+			top:27px;
+			right: baseH(1);
+		}
+	}
+
+	/*Spin & integer*/
+	&.ui-spin{
+		width: 80px; // reseta o min width da classe pai
+		input[type="number"]{
+			padding-right: 20px;
+			&:disabled{
+				& + .spin-controls{
+					opacity: .2;
+					pointer-events: none;
+				}
+			}
+		}
+		/*<remove spin default>*/
+		input[type="number"]::-webkit-outer-spin-button,
+		input[type="number"]::-webkit-inner-spin-button {
+		    -webkit-appearance: none;
+		    margin: 0;
+		}
+		input[type="number"] {
+		    -moz-appearance: textfield;
+		}
+		/*</remove spin default>*/
+		.spin-control{
+			display: block;
+			position: relative;
+			.spin-controls{
+				z-index: 1;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				right: 0;
+				.icon-element{
+					visibility: visible;
+					color: $doubledevil-grey;
+					height: ($padding-base-vertical * 4);
+					line-height: 1;
+					font-size: 1.18em;
+					transition: color $fast-time linear;
+					cursor: pointer;
+					bottom: auto; // reseta o bottom 0 default
+					&:first-child{
+						top: $padding-base-vertical - 1;
+					}
+					&:last-child{
+						margin-bottom: 0;
+						bottom: $padding-base-vertical - 1;
+						top: auto; // reseta o top 0 default
+					}
+					&:hover{
+						color: $border-grey;
+					}
+				}
+			}
+		}
+	}
+
+	/*time & duração*/
+	&.input-time{
+
+	}
+	&.input-time-hh-mm{
+		width: 100px;
+	}
+	&.input-time-hh-mm-ss{
+		width: 124px;
+	}
+	&.input-time-duration{
+		width: 115px;
+		.icon-element{
+			top: 0;
+		}
+	}
+
+	/*identificador*/
+	&.input-identificador{
+		width: 110px;
+	}
+
+	/*select simple*/
+	&.ui-select{
+		position: relative;
+		input[type="text"]{
+			color: $net-blue;
+			cursor: pointer;
+			padding-right: 20px;
+			&:disabled{
+				cursor: auto;
+				color: $placeholder-grey;
+				& + .icon-element{
+					opacity: .5;
+				}
+			}
+		}
+		.icon-element{
+			visibility: visible;
+			font-size: 1.2em;
+			top: 0;
+			line-height: 1;
+			color: $doubledevil-grey;
+			pointer-events: none;
+		}
+		.ui-select-options{
+			z-index: 1;
+			padding: $padding-xs-vertical $padding-base-horizontal;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			visibility: hidden;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: all $fast-time linear;
+			background: #fff;
+			border-radius: $radius;
+			border: solid 1px $border-grey;
+			box-shadow: 0 3px 6px rgba(black, .16);
+			border-bottom: solid 2px $net-blue;
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				li{
+					font-size: $font-md;
+					padding: base(1);
+					color: $text-grey;
+					border-radius: $radius;
+					cursor: pointer;
+					white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+					&:last-child{
+						//margin-bottom: 0;
+					}
+					&:hover{
+						background: $net-blue;
+						color: #fff;
+					}
+					span{
+						margin-right: base(1);
+					}
+				}
+			}
+		}
+		&:not(.full){
+			.ui-select-options{
+				min-width: 150%;
+			}
+		}
+		&.select-active{
+			input{
+				box-shadow: $input-shadow-inset, $input-shadow-outset rgba($input-focus-default, .35);
+				border-color: $input-focus-default;
+			}
+			.ui-select-options{
+				z-index: 9;
+				visibility: visible;
+				opacity: 1;
+				transform: translateY(0);
+				max-height: 140px; // 5 itens visiveis
+			}
+		}
+		&.ui-select--optiongroup{
+			.ui-select-options{
+				max-height: 280px; // 10 itens visiveis
+			}
+			.optiongroup{
+				& > span{
+					font-size: $font-sm;
+					display: block;
+					text-transform: uppercase;
+					font-weight: bold;
+					color: lighten($text-grey, 40%);
+					padding-left: base(1);
+					padding: baseV(1);
+					padding-bottom: baseV(2);
+				}
+				& ~ .optiongroup{
+					& > span{
+						padding-top: 0;
+					}
+					border-top: solid 1px $border-grey;
+					margin-top: baseH(1);
+					padding-top: baseH(2);
+					padding-left: baseH(1);
+					padding-right: baseH(1);
+					margin-left: -(baseH(1));
+					margin-right: -(baseH(1));
+				}
+			}
+		}
+		&.ui-select--multiple{
+			.ui-select-options{
+				max-height: 280px; // 10 itens visiveis
+				.ui-checkbox{
+					display: block;
+					font-size: $font-md;
+					padding: base(1);
+					color: $text-grey;
+					border-radius: $radius;
+					cursor: pointer;
+					white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+					.check-option{
+						display: inline-flex;
+						width: 100%;
+					}
+					&:hover{
+						background: $net-blue;
+						.check-option{
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*zoom lookup*/
+	&.zoom-lookup{
+
+		input[type="text"]{
+
+			/*placeholder style*/
+			&::-webkit-input-placeholder {
+				color: $net-blue;
+			}
+			&::-moz-placeholder {
+				color: $net-blue;
+			}
+			&:-ms-input-placeholder {
+				color: $net-blue;
+			}
+			&:-moz-placeholder {
+				color: $net-blue;
+			}
+		}
+		.zoom-lookup-wrapper{
+			position: relative;
+			box-sizing: border-box;
+			border-radius: $radius;
+			border: solid 1px $border-grey;
+			box-shadow: $input-shadow-inset;
+			padding: ($padding-sm-vertical - 3) $padding-xs;
+			line-height: 1;
+			font-size: $font-md;
+			color: $text-grey;
+			width: 100%;
+			transition: box-shadow $fast-time linear, border $fast-time linear;
+			display: flex;
+			flex-wrap: wrap;
+			input[type="text"]{
+				padding: 0;
+				border: none;
+				box-shadow: none;
+			}
+			&.zoom-lookup-active{
+				box-shadow: $input-shadow-inset, $input-shadow-outset rgba($input-focus-default, .35);
+				border-color: $input-focus-default;
+			}
+			&.has-tag{
+				padding-bottom: $padding-base-vertical - 1;
+				padding-top: $padding-base-vertical - 1;
+				padding-right: 20px;
+				display: flex;
+				align-items: center;
+				input{
+					flex-grow: 1;
+					width: auto; // remove 100%
+				}
+				.remove-tags{
+					display: block;
+					visibility: visible;
+					color: $border-grey;
+					&:hover{
+						color: $danger-red;
+						cursor: pointer;
+					}
+				}
+				.ui-tag{
+					margin-right: base(1);
+					margin-top: 2px;
+					margin-bottom: 2px;
+				}
+			}
+		}
+		.zoom-lookup-options-wrapper{
+			max-height: 106px; // total de 5 itens
+		}
+		.zoom-lookup-options{
+			z-index: 1;
+			padding: $padding-xs-vertical $padding-base-horizontal;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 100%;
+			margin: auto;
+			visibility: hidden;
+			opacity: 0;
+			transform: translateY(10px);
+			background: #fff;
+			border-radius: $radius;
+			border: solid 1px $border-grey;
+			box-shadow: 0 3px 6px rgba(black, .16);
+			border-bottom: solid 2px $net-blue;
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				//max-height: 106px; // total de 5 itens
+				overflow: auto;
+				li{
+					font-size: $font-md;
+					padding: base(1);
+					color: $text-grey;
+					border-radius: $radius;
+					cursor: pointer;
+					//margin-bottom: $padding-base-vertical;
+					white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+					&:last-child{
+						margin-bottom: 0;
+					}
+					&:hover{
+						background: $net-blue;
+						color: #fff;
+					}
+				}
+			}
+			.label-myself{
+				font-size: $font-md;
+				padding: base(1);
+				color: $text-grey;
+				border-radius: $radius;
+				cursor: pointer;
+				margin-bottom: $padding-base-vertical;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				span{
+					font-weight: bold;
+				}
+				&:hover{
+					background: $net-blue;
+					color: #fff;
+				}
+			}
+			.zoom-lookup-create{
+				display: none;
+				border-top: solid 1px $border-grey;
+				padding: ($padding-base-vertical * 2) ($padding-xs + 2px);
+				padding-bottom: 0;
+				margin-top: ($padding-base-vertical * 2);
+				margin-left: -$padding-xs;
+				margin-right: -$padding-xs;
+				color: $net-blue;
+				cursor: pointer;
+				&.show-create{
+					display: block;
+				}
+				.icon-element{
+					position: static;
+					visibility: visible;
+					padding-right: 0;
+				}
+			}
+			.list-more{
+				display: none;
+				padding: ($padding-base-vertical * 2) 2px;
+				padding-bottom: 0;
+				color: $net-blue;
+				cursor: pointer;
+				&.show-list-more{
+					display: block;
+				}
+				.icon-element{
+					position: static;
+					visibility: visible;
+					padding-right: 0;
+				}
+			}
+			&.zoom-lookup-active{
+				transition: all $fast-time linear;
+				visibility: visible;
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	}
+}
+.zoom-lookup-with-button{
+	display: flex;
+	align-items: flex-end;
+	.ui-input{
+		flex: 1;
+	}
+	.ui-button{
+		margin-left: baseH(1);
+	}
+}
+
+/*advanced search*/
+.advanced-search{
+	.advanced-search-inputs{
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		.ui-button{
+			margin-left: $padding-base-vertical;
+			.icon-element{
+				color: $doubledevil-grey;
+			}
+		}
+		.ui-button{
+			margin-left: baseH(1)
+		}
+		.advanced-search-wrap-adiconar{
+			margin-bottom: baseV(1);
+		    display: flex;
+		    flex: 1 0 50%;
+		}
+	}
+	.ui-select{
+		.icon-element{
+			top: -16px;
+		}
+		&.ui-input.ui-select-icon{
+			flex-basis: 50px;
+			flex-grow: 0;
+			.icon-element{
+				&.select-icon{
+					font-size: 1em;
+					left: baseH(1);
+					color: $status-blue;
+				}
+			}
+			.ui-select-options{
+				min-width: 200px;
+			}
+		}
+	}
+	.ui-input{
+		&.ui-select{
+			flex-grow: 1;
+			input{
+				border-right: none;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			& + .ui-input{
+				flex-grow: 4;
+				input{
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;
+				}
+				&.is-disabled{
+					pointer-events: none;
+					background: $bg-grey;
+					input{
+						background: transparent;
+						/*placeholder style*/
+						&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+							color: $placeholder-grey;
+						}
+						&::-moz-placeholder { /* Firefox 19+ */
+							color: $placeholder-grey;
+						}
+						&:-ms-input-placeholder { /* IE 10+ */
+							color: $placeholder-grey;
+						}
+						&:-moz-placeholder { /* Firefox 18- */
+							color: $placeholder-grey;
+						}
+					}
+				}
+			}
+		}
+		&.zoom-lookup{
+			flex-grow: 8;
+			.zoom-lookup-wrapper{
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+			&.is-disabled{
+				pointer-events: none;
+				background: $bg-grey;
+				input{
+					background: transparent;
+					/*placeholder style*/
+					&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+						color: $placeholder-grey;
+					}
+					&::-moz-placeholder { /* Firefox 19+ */
+						color: $placeholder-grey;
+					}
+					&:-ms-input-placeholder { /* IE 10+ */
+						color: $placeholder-grey;
+					}
+					&:-moz-placeholder { /* Firefox 18- */
+						color: $placeholder-grey;
+					}
+				}
+			}
+		}
+	}
+	.ui-tags-add{
+		display: none;
+		//padding-left: $padding-sm;
+		margin-bottom: $padding-base-vertical;
+		.limpar-tags{
+			display: flex;
+			align-items: center;
+			.icon-element{
+				[class^="seicon-"]:before{
+					margin: 0;
+				}
+			}
+		}
+	}
+	&.advanced-search-active{
+		.advanced-search-wrap-adiconar{
+			margin-right: 16px;
+		}
+		.ui-tags-add{
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			//max-width: 80%;
+			.ui-tag-add{
+				&:last-child{
+					margin-right: baseH(2);
+				}
+			}
+		}
+	}
+}
+
+/*fieldset*/
+.ui-fieldset{
+	.ui-input{
+		display: block;
+	}
+	p{
+		padding-bottom: $padding-base-vertical;
+		margin: 0;
+		font-size: 14px;
+		font-weight: bold;
+		color: $text-grey;
+	}
+	fieldset{
+		border: none;
+		border-left: solid 1px $border-grey;
+		margin: 0;
+		margin-left: 1px;
+		padding: 0;
+		padding-left: $padding-sm;
+		padding-top: $padding-sm-vertical;
+		.ui-input:not(:last-child){
+			margin-bottom: $padding-md-vertical;
+		}
+	}
+}

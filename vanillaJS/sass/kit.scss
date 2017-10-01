@@ -1,0 +1,298 @@
+@import "./bower_components/font-awesome/scss/font-awesome.scss";
+
+$fast: .15s;
+$smooth: .25s;
+$color: #A0CE4E;
+$gray: #808083;
+$radius: 4px;
+@function ease(){
+	@return ease-in-out;
+}
+
+body{
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+	font-family: Arial, sas;
+}
+*{
+	box-sizing: border-box;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.wrapper {
+	padding: 20px;
+	position: relative;
+}
+#search{
+	width: 100%;
+	padding: 12px 12px;
+	border-radius: $radius $radius 0 0;
+	border: 1px solid rgba($gray, .6);
+	border-bottom: none;
+	outline: none;
+	font-size: 12px;
+	&::-webkit-input-placeholder {
+			color: $gray;
+			font-size: 11px;
+	}
+	&::-moz-placeholder {
+			color: $gray;
+	}
+	&:-ms-input-placeholder {
+			color: $gray;
+	}
+	&:-moz-placeholder {
+			color: $gray;
+	}
+}
+#expandir{
+	position: absolute;
+	right: 28px;
+	top: 60px;
+	font-size: 11px;
+	display: block;
+	text-align: right;
+	padding: 5px 0;
+ color: $color;
+	font-weight: bold;
+	text-decoration: none;
+		&:after{
+		content: "Expandir"
+	}
+	&:hover{
+		color: $gray;
+		&:after{
+			content: "Expandir todos"
+		}
+	}
+	&.active{
+		&:after{
+			content: "Fechar"
+		}
+		&:hover{
+			&:after{
+				content: "Fechar todos"
+			}
+		}
+	}
+}
+#treeview {
+	border: 1px solid rgba($gray, .6);
+	border: 1px solid $color;
+	padding: 15px 20px;
+	padding-top: 20px;
+	border-radius: 0 0 $radius $radius;
+	.treeview-node {
+		font-size: 12px;
+		color: #444;
+		margin: 5px 0;
+		& > span {
+			cursor: default;
+			font-size: 14px;
+			vertical-align: middle;
+			&:hover{
+				.fa{
+					cursor: pointer;
+					visibility: visible;
+					opacity: 1;
+					transform: translateX(0);
+					transition: all $fast ease();
+				}
+			}
+			&.isTreeNode {
+				&:before {
+					content: "";
+					width: 0;
+					height: 0;
+					display: inline-block;
+					margin-right: 5px;
+					border: solid .4em currentColor;
+					border-top-color: transparent;
+					border-right: none;
+					border-bottom-color: transparent;
+					transition: all $fast ease();
+				}
+				&:hover{
+					&:before {
+						color: $color;
+					}
+				}
+				& + ul {
+					max-height: 0;
+					will-change: max-height;
+					transition: max-height $smooth ease();
+				}
+				&.treeview-active{
+					&:before {
+						color: $color;
+						transform: rotate(90deg);
+					}
+					& + ul {
+						max-height: 1000px;
+					}
+				}
+			}
+		}
+		.fa{
+			font-size: 1.2em;
+			vertical-align: middle;
+			margin-left: 8px;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateX(-5px);
+			color: $gray;
+			&.fa-trash-o{
+				position: relative;
+				top: -1px;
+			}
+			&:hover{
+				color: $color;
+				&.fa-trash-o{
+					color: #e53935;
+				}
+			}
+		}
+		ul {
+			padding-left: 10px;
+			overflow: hidden;
+			li {
+				margin: 4px 0;
+			}
+		}
+	}
+}
+.modal-node{
+	box-shadow: 0 0 0 4000px rgba($gray, .25), 0 2px 4px rgba($gray, .35);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 600px;
+	max-height: 250px;
+	margin: auto;
+	border-radius: $radius;
+	padding: 0 20px;
+	//padding-bottom: 25px;
+	background: #fff;
+	z-index: 2;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(20px);
+	transition: all $fast ease();
+	.close-modal{
+		position: absolute;
+		right: -10px;
+		top: -10px;
+		border-radius: 50%;
+		line-height: 1;
+		width: 30px;
+		height: 30px;
+		background: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $gray;
+		cursor: pointer;
+		&:hover{
+			color: $color;
+		}
+	}
+	form{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: space-around;
+		input[type="text"]{
+			border: solid 1px $gray;
+			border-bottom-color: $color;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			padding: 10px 4px;
+			outline: none;
+			font-size: 12px;
+			&::-webkit-input-placeholder {
+					color: $gray;
+			}
+			&::-moz-placeholder {
+					color: $gray;
+			}
+			&:-ms-input-placeholder {
+					color: $gray;
+			}
+			&:-moz-placeholder {
+					color: $gray;
+			}
+		}
+		button{
+			border: 1px solid rgba($gray, .5);
+			border-radius: $radius;
+			padding: 6px 12px;
+			font-size: 12px;
+			align-self: flex-end;
+			cursor: pointer;
+			background: rgba($gray, .15);
+			color: darken($gray, 10%);
+			line-height: 1.2;
+			outline: none;
+			&:hover{
+				border-color: $color;
+			}
+		}
+	}
+	&.active{
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+}
+
+.tooltip{
+	min-width: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 1px solid rgba($gray, .5);
+	background: #fff;
+	z-index: 1;
+	border-radius: $radius;
+	font-size: 12px;
+	transform: translateY(30px);
+	box-shadow: 2px 2px 1px rgba($gray, .1);
+	visibility: hidden;
+	ul{
+		padding: 5px 5px 10px 5px;
+	}
+	li{
+		line-height: 1.5;
+	}
+	b{
+		font-size: 11px;
+	}
+	&:before{
+		content: "";
+		position: absolute;
+		top: -4px;
+		left: 10px;
+		width: 7px;
+		height: 7px;
+		transform: rotate(45deg);
+		background: #fff;
+		border: solid 1px rgba($gray, .5);
+		border-right: none;
+		border-bottom: none;
+		box-sizing: border-box;
+	}
+	&.active{
+		transition: transform $fast ease();
+		transform: translateY(20px);
+		visibility: visible;
+	}
+}

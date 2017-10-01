@@ -1,0 +1,21 @@
+{
+  "name": "treasy teste",
+  "description": "package",
+  "main": "index.js",
+  "authors": [
+    "jotavejv"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "font-awesome": "Font-Awesome#^4.7.0"
+  }
+}

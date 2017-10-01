@@ -1,0 +1,136 @@
+.ui-slider-input{
+	position: relative;
+	.ui-slider-input-value{
+		font-size: 10px;
+		color: $doubledevil-grey;
+		float: right;
+	}
+	.ui-required{
+		&:before{
+			margin: 0;
+		}
+	}
+	input{
+		margin: 0;
+		margin-top: 4px;
+		outline: none;
+		-webkit-appearance: none;
+	    -moz-appearance: none;
+	    appearance: none;
+	    width: 100%;
+
+		&::-webkit-slider-runnable-track {
+		    width: 100%;
+		    height: 8px;
+		    cursor: pointer;
+		    background: $border-grey;
+		    border-radius: 4px;
+		}
+		&::-webkit-slider-thumb {
+		    height: 22px;
+		    width: 22px;
+		    border-radius: 50%;
+		    background: $net-blue;
+		    cursor: pointer;
+		    -webkit-appearance: none;
+		    appearance: none;
+		    margin-top: -8px;
+		    transition: all $fast-time ease;
+		    border: solid 1px $border-grey;
+		}
+		&:focus::-webkit-slider-runnable-track {
+		    background: $border-grey;
+		}
+		&::-webkit-slider-runnable-track {
+		    width: 100%;
+		    height: 8px;
+		    cursor: pointer;
+		    background: $border-grey;
+		    border-radius: 4px;
+		}
+		&::-webkit-slider-thumb {
+		    height: 22px;
+		    width: 22px;
+		    border-radius: 50%;
+		    background: $net-blue;
+		    cursor: pointer;
+		    -webkit-appearance: none;
+		    appearance: none;
+		    margin-top: -8px;
+		    transition: all $fast-time ease;
+		    border: solid 1px $border-grey;
+		}
+		&:focus::-webkit-slider-runnable-track {
+		    background: $border-grey;
+		}
+		&::-moz-range-track {
+		    width: 100%;
+		    height: 8px;
+		    cursor: pointer;
+		    background: $border-grey;
+		    border-radius: 4px;
+		}
+		&::-moz-range-thumb {
+		    height: 22px;
+		    width: 22px;
+		    border-radius: 50%;
+		    background: $net-blue;
+		    cursor: pointer;
+		    -moz-appearance: none;
+		    appearance: none;
+		    margin-top: -8px;
+		    transition: all $fast-time ease;
+		    border: solid 1px $border-grey;
+		}
+
+		&::-ms-track {
+		    width: 100%;
+		    height: 8px;
+
+		    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+		    background: transparent;
+
+		    /*leave room for the larger thumb to overflow with a transparent border */
+		    border-color: transparent;
+		    border: none;
+
+		    /*remove default tick marks*/
+		    color: transparent;
+		}
+		&::-ms-fill-lower {
+		    background: $border-grey;
+		    border-radius: 4px;
+		}
+		&::-ms-fill-upper {
+		    background: $border-grey;
+		    border-radius: 4px;
+		}
+		&::-ms-thumb {
+		    height: 22px;
+		    width: 22px;
+		    border-radius: 50%;
+		    background: $net-blue;
+		    cursor: pointer;
+		    -ms-appearance: none;
+		    appearance: none;
+		    margin-top: -4px;
+		    border: solid 1px $border-grey;
+		}
+		&:focus::-ms-fill-lower {
+		    background: $border-grey;
+		}
+		&:focus::-ms-fill-upper {
+		    background: $border-grey;
+		}
+		&:hover{
+		    &::-webkit-slider-thumb{
+		        background: $status-blue;
+		        transform: scale(1.15);
+		    }
+		    &::-moz-range-thumb{
+		        background: $status-blue;
+		        transform: scale(1.15);
+		    }
+		}
+	}
+}
