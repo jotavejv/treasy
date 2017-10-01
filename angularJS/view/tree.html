@@ -1,0 +1,43 @@
+<div>
+    <input type="text" id="search" placeholder="Digite para filtrar">
+    <a href="#" id="expandir" class="active"></a>
+    <div id="treeview"></div>
+    <div class="modal-node">
+        <div class="close-modal">
+            <i class="fa fa-times"></i>
+        </div>
+        <form>
+            <input type="text" placeholder="Código" name="cod" required>
+            <input type="text" placeholder="Descrição" name="desc" required>
+            <input type="text" placeholder="Observação" name="obs">
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <div class="tooltip">
+        <ul>
+            <li><b>código: </b> <span id="cod"></span></li>
+            <li><b>descrição: </b> <span id="desc"></span></li>
+            <li><b>observação: </b> <span id="obs"></span></li>
+        </ul>
+    </div>
+</div>
+
+<!-- recursao em angular de exemplo, optei pelo render no js
+<div id="treeview">
+        <script type="text/ng-template" id="recursao">
+            <div class="treeview-node">
+                <span data-codigo="{{item.cod}}" data-observacao="{{item.obs}}" data-descricao="{{item.descricao}}" ng-class="item.nodes ? 'isTreeNode treeview-active' : ''">{{item.descricao}}<i class='fa fa-plus-square-o addButton'></i><i class="fa fa-trash-o deleteButton"></i></span>
+                <ul ng-if="item.nodes">
+                    <li ng-repeat="item in item.nodes" ng-include="'recursao'"></li>
+                </ul>
+            </div>
+        </script>
+        <div class="treeview-node">
+		    <span data-codigo="{{model[0].cod}}" data-observacao="{{model[0].obs}}" data-descricao="{{model[0].descricao}}" ng-class="model[0].nodes ? 'isTreeNode treeview-active' : ''">{{model[0].descricao}}<i class='fa fa-plus-square-o addButton'></i><i class="fa fa-trash-o deleteButton"></i></span>
+
+            <ul>
+                <li ng-repeat="item in model[0].nodes" ng-include="'recursao'"></li>
+            </ul>
+        </div>
+    </div>
+-->
