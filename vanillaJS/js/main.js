@@ -339,12 +339,13 @@ function tooltip(){
 	const tooltipHoverElement = document.querySelectorAll('.treeview-node > span');
 	Array.from(tooltipHoverElement).map(item => {
 		item.addEventListener('mouseover', e => {
-			let target = item;
-			let targetPosition = item.getBoundingClientRect();
-			populateTooltip(target.dataset);
-			tooltipTemplate.style.left = targetPosition.left + 'px';
-			tooltipTemplate.style.top = targetPosition.top + 'px';
-			tooltipTemplate.classList.add('active');
+        let target = item;
+		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		let targetPosition = item.getBoundingClientRect();
+		populateTooltip(target.dataset);
+		tooltipTemplate.style.left = targetPosition.left + 'px';
+		tooltipTemplate.style.top = (targetPosition.top + scrollTop) + 'px';
+		tooltipTemplate.classList.add('active');
 		})
 		item.addEventListener('mouseleave', e => {
 			tooltipTemplate.classList.remove('active');
